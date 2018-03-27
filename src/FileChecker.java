@@ -23,7 +23,7 @@ public class FileChecker {
     }
 
 
-    private String fileToHex(){
+    private String fileToHex() throws IOException {
         if (file == null) {
             throw new NullPointerException("File cannot be null");
         }
@@ -52,7 +52,9 @@ public class FileChecker {
         throw new NoMatchException("File with given extension is not supported by this program");
     }
 
-    public boolean checkFile() {
+     public boolean checkFile() throws NoMatchException {
+        matchExtension();
+        if (inNameExtension.equals(inHexExtension)) return true;
         return false;
     }
 
