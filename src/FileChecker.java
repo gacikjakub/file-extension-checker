@@ -11,6 +11,8 @@ public class FileChecker {
     
     static {
         new GIF();
+        new JPEG();
+        new TXT();
     }
 
 
@@ -71,16 +73,9 @@ public class FileChecker {
             throw new NoExtensionInNameException("Under given path file has no extension");
         }
         inNameExtension = file.getName().substring(lastIndexOfDot + 1).toLowerCase();
-    }
-    
-    public static void main(String args[]) {
-        FileChecker fileChecker = new FileChecker();
-        try {
-            fileChecker.openFile("C:\\Users\\Kuba\\file-extension-checker\\src\\gif.gif");
-            System.out.println("fileNameExtension = " + fileChecker.getExtensionByFilename());
-            System.out.println(fileChecker.fileToHex());
-        } catch (Exception e) {
-            System.out.println("Exception handled: " + e.getMessage());
+        if (inNameExtension.equals("jpeg")) {
+            inNameExtension = "jpg";
         }
     }
+    
 }
