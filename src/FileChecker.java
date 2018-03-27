@@ -24,7 +24,16 @@ public class FileChecker {
 
 
     private String fileToHex(){
-       return null;
+        if (file == null) {
+            throw new NullPointerException("File cannot be null");
+        }
+        InputStream inputStream = new FileInputStream(file);
+        StringBuilder hexResult = new StringBuilder();
+        int character = 0;
+        while ((character = inputStream.read()) != -1) {
+            hexResult.append(String.format("%02X ", character));
+        }
+        return hexResult.toString();
     }
 
     public boolean checkFile() {
